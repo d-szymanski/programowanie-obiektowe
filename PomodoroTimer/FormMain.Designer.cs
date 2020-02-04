@@ -119,6 +119,7 @@
             this.LabelTimer.Size = new System.Drawing.Size(219, 89);
             this.LabelTimer.TabIndex = 7;
             this.LabelTimer.Text = "00:00";
+            this.LabelTimer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Timer_MouseDown);
             // 
             // FormMain
             // 
@@ -158,6 +159,7 @@
         private System.Windows.Forms.Label LabelPomodoroTimer;
         private System.Windows.Forms.Label LabelByWildu;
         private System.Windows.Forms.Label LabelTimer;
+
     }
 }
 
