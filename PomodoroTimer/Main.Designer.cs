@@ -1,6 +1,6 @@
 ﻿namespace PomodoroTimer
 {
-    partial class FormMain
+    partial class Main
     {
         /// <summary>
         /// Wymagana zmienna projektanta.

@@ -3,15 +3,15 @@ using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
-    public partial class FormMain : Form
+    public partial class Main : Form
     {
 
         private FormLocation formLocation = new FormLocation();
         private Timer formRefreshTimer;
         private PomodoroTimer pomodoroTimer = new PomodoroTimer();
         private ColorTransition colorTransition = new ColorTransition(true);
-
-        public FormMain()
+        private LogWriter logWriter = new LogWriter("PomodoroTimer started");
+        public Main()
         {
             InitializeComponent();
             initFormRefreshTimer();
@@ -93,10 +93,12 @@ namespace PomodoroTimer
             if (!pomodoroTimer.getIsRunning())
             {
                 pomodoroTimer.start();
+                logWriter.LogWrite("Started");
             }
             else
             {
                 pomodoroTimer.stop();
+                logWriter.LogWrite("Stoped");
             }
         }
 
@@ -105,8 +107,10 @@ namespace PomodoroTimer
             if (pomodoroTimer.getIsRunning())
             {
                 pomodoroTimer.stop();
+                logWriter.LogWrite("Stoped");
             }
             pomodoroTimer.reset();
+            logWriter.LogWrite("Restarted");
         }
     }
 }
