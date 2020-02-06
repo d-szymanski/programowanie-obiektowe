@@ -126,7 +126,7 @@
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.IndianRed;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(61)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(500, 320);
             this.ControlBox = false;
             this.Controls.Add(this.LabelTimer);

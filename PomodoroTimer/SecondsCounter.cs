@@ -1,25 +1,24 @@
 ﻿namespace PomodoroTimer
 {
-    class PomodoroTime
+    class SecondsCounter
     {
-        private int seconds;
-        static readonly int POMODORO_TIME = 60 * 25;
+        protected int count { get; private set; }
+        private int initialCount;
 
-        public PomodoroTime(int _seconds)
+        public SecondsCounter(int _seconds)
         {
-            seconds = _seconds;
+            setCount(_seconds);
         }
 
-        public PomodoroTime() : this(POMODORO_TIME) { }
-
-        public int getTime()
+        protected void setCount(int _count)
         {
-            return seconds;
+            count = _count;
+            initialCount = _count;
         }
 
         private int getSeconds()
         {
-            return seconds % 60;
+            return count % 60;
         }
 
         public string getSecondsString()
@@ -31,7 +30,7 @@
 
         private int getMinutes()
         {
-            return ((seconds - getSeconds()) / 60) % 60;
+            return ((count - getSeconds()) / 60) % 60;
         }
 
         public string getMinutesString()
@@ -41,25 +40,17 @@
             return prefix + num.ToString();
         }
 
-        public void increment()
-        {
-            if (seconds < POMODORO_TIME)
-            {
-                seconds++;
-            }
-        }
-
         public void decrement()
         {
-            if (seconds > 0)
+            if (count > 0)
             {
-                seconds--;
+                count--;
             }
         }
 
-        public void reset()
+        public void resetCounter()
         {
-            seconds = POMODORO_TIME;
+            count = initialCount;
         }
     }
 }

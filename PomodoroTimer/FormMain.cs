@@ -5,10 +5,11 @@ namespace PomodoroTimer
 {
     public partial class FormMain : Form
     {
+
         private FormLocation formLocation = new FormLocation();
         private Timer formRefreshTimer;
         private PomodoroTimer pomodoroTimer = new PomodoroTimer();
-
+        private ColorTransition colorTransition = new ColorTransition(true);
 
         public FormMain()
         {
@@ -27,6 +28,30 @@ namespace PomodoroTimer
         private void refreshForm(Object myObject, EventArgs myEventArgs)
         {
             LabelTimer.Text = pomodoroTimer.getPomodoroTimer();
+            if (pomodoroTimer.isBreakTime)
+            {
+                if (pomodoroTimer.getIsRunning())
+                {
+
+                    BackColor = colorTransition.getGreenColor();
+                }
+                else
+                {
+                    BackColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                if (pomodoroTimer.getIsRunning())
+                {
+                    BackColor = colorTransition.getRedColor();
+                }
+                else
+                {
+                    BackColor = System.Drawing.Color.DarkRed;
+
+                }
+            }
         }
 
 
@@ -74,6 +99,7 @@ namespace PomodoroTimer
                 pomodoroTimer.stop();
             }
         }
+
         private void resetPomodoroTimer()
         {
             if (pomodoroTimer.getIsRunning())
